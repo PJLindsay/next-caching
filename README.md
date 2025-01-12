@@ -1,4 +1,4 @@
-# news-project
+# next-caching
 
 Next-Caching demo site from Max's Next.js 15 course on Udemy 
 
