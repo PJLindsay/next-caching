@@ -1,6 +1,7 @@
 //import { unstable_noStore } from "next/cache";
 
 import Messages from "@/components/messages";
+import { getMessages } from "@/lib/messages";
 
 // file-level next.js config to say revalidate cache after 5 seconds
 //export const revalidate = 5;
@@ -14,10 +15,13 @@ export default async function MessagesPage() {
   //unstable_noStore();
 
   // example of setting a tag (for cache tag purposes eg. revalidateTag())
-  const response = await fetch("http://localhost:8080/messages", {
-    next: { tags: ["msg"] },
-  });
-  const messages = await response.json();
+  // const response = await fetch("http://localhost:8080/messages", {
+  //   next: { tags: ["msg"] },
+  // });
+  // const messages = await response.json();
+
+  // an example of caching when you don't have an external API
+  const messages = getMessages();
 
   if (!messages || messages.length === 0) {
     return <p>No messages found</p>;

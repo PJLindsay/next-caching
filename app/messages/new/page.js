@@ -9,21 +9,7 @@ export default function NewMessagePage() {
 
     const message = formData.get("message");
     addMessage(message);
-
-    // we can revalidate cache here (revalidate a piece of cache on-demand)
-    // a bit more nuanced than using config (eg. using something like revalidate: 5 -
-    // which is a bit more brute - and may not be necessary to do)
-
-    // this will revalidate the cache for this path, but not any nested pages
-    //revalidatePath("/messages");
-
-    // revalidate cache for this path *and* any nested pages
-    //revalidatePath("/messages", "layout");
-
-    // revalidate cache for all pages on this site
-    //revalidatePath("/", "layout");
-
-    revalidateTag("msg");
+    //revalidateTag("msg");
 
     redirect("/messages");
   }
