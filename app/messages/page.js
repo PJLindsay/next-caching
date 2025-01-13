@@ -12,7 +12,11 @@ import Messages from "@/components/messages";
 export default async function MessagesPage() {
   // same effect as force-dynamic (just inside this specific component and any requests sent to data sources)
   //unstable_noStore();
-  const response = await fetch("http://localhost:8080/messages");
+
+  // example of setting a tag (for cache tag purposes eg. revalidateTag())
+  const response = await fetch("http://localhost:8080/messages", {
+    next: { tags: ["msg"] },
+  });
   const messages = await response.json();
 
   if (!messages || messages.length === 0) {
